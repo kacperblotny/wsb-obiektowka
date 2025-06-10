@@ -14,29 +14,29 @@ class CartTest {
     void givenEmptyCart_whenAddProduct_thenCartHasOneItem() {
         // given
         Cart cart = new Cart();
-        Product apple = new Product("Apple", 1.0, Category.FOOD, true);
+        Product apple = new Product("Apple", BigDecimal.valueOf(1.0), Category.FRUIT, true);
 
         // when
-        cart.addProduct(apple);
+        cart.add(apple);
 
         // then
-        assertEquals(1, cart.getProducts().size());
-        assertTrue(cart.getProducts().containsKey(apple));
-        assertEquals(1, cart.getProducts().get(apple));
+        assertEquals(1, cart.getItems().size());
+        assertTrue(cart.getItems().containsKey(apple));
+        assertEquals(1, cart.getItems().get(apple));
     }
 
     @Test
     void givenCartWithProduct_whenRemoveProduct_thenProductCountDecreases() {
         // given
         Cart cart = new Cart();
-        Product apple = new Product("Apple", 1.0, Category.FOOD, true);
-        cart.addProduct(apple);
-        cart.addProduct(apple);
+        Product apple = new Product("Apple", BigDecimal.valueOf(1.0), Category.FRUIT, true);
+        cart.add(apple);
+        cart.add(apple);
 
         // when
-        cart.removeProduct(apple);
+        cart.remove(apple);
 
         // then
-        assertEquals(1, cart.getProducts().get(apple));
+        assertEquals(1, cart.getItems().get(apple));
     }
 }
