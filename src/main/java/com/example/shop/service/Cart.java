@@ -16,7 +16,12 @@ public class Cart {
     }
 
     public void add(Product p) {
-        items.merge(p, 1, Integer::sum);
+        if (p.isAvailable()) {
+            items.merge(p, 1, Integer::sum);
+            System.out.println("Dodano: " + p.getName());
+        } else {
+            System.out.println("Produkt niedostępny.");
+        }
     }
     public void remove(Product p) {
         items.computeIfPresent(p, (key, qty) -> qty > 1 ? qty - 1 : null);
@@ -25,8 +30,8 @@ public class Cart {
     public void applyPromotion(String code) {
        switch(code.toUpperCase()) {
             case "10PERCENT" -> promotion = new PercentageDiscountPromotion(new BigDecimal("0.10"));
-            case "3FOR1"     -> promotion = new ThreeForOnePromotion();
-            case "2FORHALF"  -> promotion = new TwoForHalfPromotion();
+            case "THIRDFOR1"     -> promotion = new ThirdForOnePromotion();
+            case "SECONDFORHALF"  -> promotion = new SecondForHalfPromotion();
             default -> {
                 System.out.println("Nieznany kod promocji.");
                 return;

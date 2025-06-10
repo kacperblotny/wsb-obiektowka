@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ThreeForOnePromotion implements Promotion {
+public class ThirdForOnePromotion implements Promotion {
     @Override
     public BigDecimal apply(Map<Product, Integer> items) {
         // flatten to list of individual prices
@@ -16,9 +16,11 @@ public class ThreeForOnePromotion implements Promotion {
 
         int fullGroups = prices.size() / 3;
         BigDecimal sum = BigDecimal.ZERO;
-        // first `fullGroups` items cost nothing
+        // first `fullGroups` items cost 1 each
         for (int i = 0; i < prices.size(); i++) {
-            if (i >= fullGroups) {
+            if (i < fullGroups) {
+                sum = sum.add(BigDecimal.ONE);
+            } else {
                 sum = sum.add(prices.get(i));
             }
         }
