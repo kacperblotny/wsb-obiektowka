@@ -4,7 +4,7 @@ import com.example.shop.model.Product;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class TwoForHalfPromotion implements Promotion {
+public class SecondForHalfPromotion implements Promotion {
     @Override
     public BigDecimal apply(Map<Product, Integer> items) {
         BigDecimal sum = BigDecimal.ZERO;

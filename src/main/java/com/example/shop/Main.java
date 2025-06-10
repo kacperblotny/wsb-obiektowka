@@ -61,7 +61,6 @@ public class Main {
                     List<Product> all = catalog.listAllAlpha();
                     if (idx >= 0 && idx < all.size()) {
                         cart.add(all.get(idx));
-                        System.out.println("Dodano: " + all.get(idx).getName());
                     } else {
                         System.out.println("Nieprawidłowy indeks.");
                     }
@@ -92,7 +91,7 @@ public class Main {
                     cart.printContents();
                 }
                 case 6 -> {
-                    System.out.print("Podaj kod promocji (10PERCENT, 3FOR1, 2FORHALF): ");
+                    System.out.print("Podaj kod promocji (10PERCENT, THIRDFOR1, SECONDFORHALF): ");
                     String code = sc.nextLine().trim();
                     cart.applyPromotion(code);
                 }
