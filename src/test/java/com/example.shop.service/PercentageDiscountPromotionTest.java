@@ -14,14 +14,14 @@ class PercentageDiscountPromotionTest {
     void givenCartWithTotal100_whenApply10PercentPromotion_thenTotalIs90() {
         // given
         Cart cart = new Cart();
-        cart.addProduct(new Product("A", 30, Category.OTHER, true));
-        cart.addProduct(new Product("B", 70, Category.OTHER, true));
-        PercentageDiscountPromotion promo = new PercentageDiscountPromotion("10OFF");
+        cart.add(new Product("A", BigDecimal.valueOf(30), Category.FRUIT, true));
+        cart.add(new Product("B", BigDecimal.valueOf(70), Category.DRINK, true));
+        String promo = "10PERCENT";
 
         // when
         cart.applyPromotion(promo);
 
         // then
-        assertEquals(90.0, cart.calculateTotalPrice(), 0.001);
+        assertEquals(BigDecimal.valueOf(100 * 0.90), cart.totalPrice());
     }
 }
