@@ -19,8 +19,9 @@ public class Cart {
         if (p.isAvailable()) {
             items.merge(p, 1, Integer::sum);
             System.out.println("Dodano: " + p.getName());
-        } else
+        } else {
             System.out.println("Produkt niedostępny.");
+        }
     }
     public void remove(Product p) {
         items.computeIfPresent(p, (key, qty) -> qty > 1 ? qty - 1 : null);

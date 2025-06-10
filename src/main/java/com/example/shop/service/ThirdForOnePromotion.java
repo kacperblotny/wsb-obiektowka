@@ -16,7 +16,7 @@ public class ThirdForOnePromotion implements Promotion {
 
         int fullGroups = prices.size() / 3;
         BigDecimal sum = BigDecimal.ZERO;
-        // first `fullGroups` items cost 1
+        // first `fullGroups` items cost 1 each
         for (int i = 0; i < prices.size(); i++) {
             if (i < fullGroups) {
                 sum = sum.add(BigDecimal.ONE);
