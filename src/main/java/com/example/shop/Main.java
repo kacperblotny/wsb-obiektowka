@@ -2,8 +2,8 @@ package com.example.shop;
 
 import com.example.shop.model.Category;
 import com.example.shop.model.Product;
-import com.example.shop.service.Catalog;
 import com.example.shop.service.Cart;
+import com.example.shop.service.Catalog;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Main {
             System.out.print("Wybór: ");
 
             int choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
 
             switch (choice) {
                 case 1 -> {
@@ -57,7 +57,8 @@ public class Main {
                 }
                 case 3 -> {
                     System.out.print("Podaj indeks produktu (wg listy z pkt.1): ");
-                    int idx = sc.nextInt(); sc.nextLine();
+                    int idx = sc.nextInt();
+                    sc.nextLine();
                     List<Product> all = catalog.listAllAlpha();
                     if (idx >= 0 && idx < all.size()) {
                         cart.add(all.get(idx));
@@ -69,7 +70,7 @@ public class Main {
                     System.out.println("== Zawartość koszyka ==");
                     cart.printContents();
                     System.out.print("Podaj nazwę produktu do usunięcia: ");
-                    String nameToRemove = sc.nextLine().trim();  // never reassign this
+                    String nameToRemove = sc.nextLine().trim();
 
                     boolean removed = cart.getItems().keySet().stream()
                             .filter(p -> p.getName().equalsIgnoreCase(nameToRemove))

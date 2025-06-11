@@ -17,24 +17,42 @@ public class Product {
     }
 
     // getters
-    public String getName() { return name; }
-    public BigDecimal getPrice() { return price; }
-    public Category getCategory() { return category; }
-    public boolean isAvailable() { return available; }
+    public String getName() {
+        return name;
+    }
 
-    public void setAvailable(boolean available) { this.available = available; }
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-    // equals & hashCode so identical products behave correctly in lists/sets
-    @Override public boolean equals(Object o) {
+    public Category getCategory() {
+        return category;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    @Override
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product p)) return false;
         return Objects.equals(name, p.name) &&
                 Objects.equals(price, p.price) &&
                 category == p.category;
     }
-    @Override public int hashCode() { return Objects.hash(name, price, category); }
 
-    @Override public String toString() {
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, category);
+    }
+
+    @Override
+    public String toString() {
         return "%s (%.2f zł)".formatted(name, price);
     }
 }

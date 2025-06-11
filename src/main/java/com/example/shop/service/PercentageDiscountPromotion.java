@@ -1,6 +1,7 @@
 package com.example.shop.service;
 
 import com.example.shop.model.Product;
+
 import java.math.BigDecimal;
 import java.util.Map;
 
@@ -13,12 +14,10 @@ public class PercentageDiscountPromotion implements Promotion {
 
     @Override
     public BigDecimal apply(Map<Product, Integer> items) {
-        // sum normal total
         BigDecimal total = items.entrySet().stream()
                 .map(e -> e.getKey().getPrice()
                         .multiply(BigDecimal.valueOf(e.getValue())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        // apply percentage
         return total.multiply(factor);
     }
 }

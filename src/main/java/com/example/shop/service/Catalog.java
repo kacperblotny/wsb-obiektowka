@@ -1,26 +1,31 @@
 package com.example.shop.service;
 
-import com.example.shop.model.*;
+import com.example.shop.model.Category;
+import com.example.shop.model.Product;
+
 import java.math.BigDecimal;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Catalog {
     private final List<Product> products = new ArrayList<>();
 
-    public Catalog() { seed(); }
-
-    // --- Requirement 2b: predefined items ----------------------------------
-    private void seed() {
-        products.add(new Product("Jabłko",  new BigDecimal("2.50"), Category.FRUIT, true));
-        products.add(new Product("Cytryna", new BigDecimal("1.99"), Category.FRUIT, true));
-        products.add(new Product("Gruszka", new BigDecimal("3.20"), Category.FRUIT, false));
-        products.add(new Product("Mleko",   new BigDecimal("4.69"), Category.DAIRY,  true));
-        products.add(new Product("Masło",   new BigDecimal("6.30"), Category.DAIRY,  true));
-        products.add(new Product("Chleb",   new BigDecimal("5.00"), Category.BAKERY, true));
+    public Catalog() {
+        seed();
     }
 
-    // --- Requirement 2c: list all, alphabetical ----------------------------
+    // przykładowe produkty w sklepie
+    private void seed() {
+        products.add(new Product("Jabłko", new BigDecimal("2.50"), Category.OWOCE, true));
+        products.add(new Product("Cytryna", new BigDecimal("1.99"), Category.OWOCE, true));
+        products.add(new Product("Gruszka", new BigDecimal("3.20"), Category.OWOCE, false));
+        products.add(new Product("Mleko", new BigDecimal("4.69"), Category.NABIAL, true));
+        products.add(new Product("Masło", new BigDecimal("6.30"), Category.NABIAL, true));
+        products.add(new Product("Chleb", new BigDecimal("5.00"), Category.PIECZYWO, true));
+    }
+
+    // Wyświetl wszystkie produkty sortując alfabetycznie
     public List<Product> listAllAlpha() {
         return products.stream()
                 .sorted(Comparator.comparing(Product::getName,
@@ -28,11 +33,11 @@ public class Catalog {
                 .toList();
     }
 
-    // --- Requirement 2d: by category, price ascending, only available ------
+    // Wyświetl wszystkie dostępne produkty z wybranej kategorii sortując po cenie wzwyż
     public List<Product> listByCategory(Category cat) {
         return products.stream()
                 .filter(p -> p.getCategory() == cat && p.isAvailable())
-                .sorted(Comparator.comparing(Product::getPrice)) // cheapest first
+                .sorted(Comparator.comparing(Product::getPrice))
                 .toList();
     }
 }

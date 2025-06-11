@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CartTest {
 
@@ -14,7 +15,7 @@ class CartTest {
     void givenEmptyCart_whenAddProduct_thenCartHasOneItem() {
         // given
         Cart cart = new Cart();
-        Product apple = new Product("Apple", BigDecimal.valueOf(1.0), Category.FRUIT, true);
+        Product apple = new Product("Apple", BigDecimal.valueOf(1.0), Category.OWOCE, true);
 
         // when
         cart.add(apple);
@@ -29,7 +30,7 @@ class CartTest {
     void givenCartWithProduct_whenRemoveProduct_thenProductCountDecreases() {
         // given
         Cart cart = new Cart();
-        Product apple = new Product("Apple", BigDecimal.valueOf(1.0), Category.FRUIT, true);
+        Product apple = new Product("Apple", BigDecimal.valueOf(1.0), Category.OWOCE, true);
         cart.add(apple);
         cart.add(apple);
 
