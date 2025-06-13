@@ -29,7 +29,7 @@ public class Catalog {
     public List<Product> listAllAlpha() {
         return products.stream()
                 .sorted(Comparator.comparing(Product::getName,
-                        String.CASE_INSENSITIVE_ORDER))        // alphabetical
+                        String.CASE_INSENSITIVE_ORDER))
                 .toList();
     }
 

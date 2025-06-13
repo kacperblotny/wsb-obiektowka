@@ -16,7 +16,6 @@ public class Product {
         this.available = available;
     }
 
-    // getters
     public String getName() {
         return name;
     }
